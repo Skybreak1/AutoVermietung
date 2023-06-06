@@ -6,38 +6,41 @@ using System.Threading.Tasks;
 
 namespace AutoVermietung
 {
-    internal class Auto
+    public class Auto
     {
+        // Attribute
         private int AutoNr;
-        private String Hersteller;
-        private String Modell;
+        private string Hersteller;
+        private string Model;
         private int PS;
         private string Baujahr;
-        private float Mietpreis;
+        private double MietPreis;
         private bool Verfuegbar;
 
-        public Auto(int autoNr, string hersteller, string modell, int pS, string baujahr, float mietpreis, bool verfuegbar)
+        public Auto(int autoNr, string hersteller, string model, int pS, string baujahr, double mietPreis, bool verfuegbar)
         {
             AutoNr = autoNr;
             Hersteller = hersteller;
-            Modell = modell;
+            Model = model;
             PS = pS;
             Baujahr = baujahr;
-            Mietpreis = mietpreis;
+            MietPreis = mietPreis;
             Verfuegbar = verfuegbar;
         }
-        float getMietPreis()
+
+        public double GetMietPreis()
         {
-            return Mietpreis;
+            return MietPreis;
         }
 
-        bool getVerfuegbar()
+        public bool GetVerfuegbar()
         {
             return Verfuegbar;
         }
-        bool setVerfuegbar() 
-        { 
-            return Verfuegbar; 
+
+        public void SetVerfuegbar(bool verfuegbar)
+        {
+            Verfuegbar = verfuegbar;
         }
     }
 }

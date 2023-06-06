@@ -6,90 +6,56 @@ using System.Threading.Tasks;
 
 namespace AutoVermietung
 {
-    using System;
-
     internal class Vermietung
     {
-        private int VermietungsNr;
-        private DateTime MietStart;
-        private DateTime MietEnde;
-        private int MietdauerinTagen;
-        private Kunde Kunde;
-        private Auto Auto;
+        // Attribute
+        private int VermietungsNr { get; set; }
+        private DateTime MietStart { get; set; }
+        private DateTime MietEnde { get; set; }
+        private int MietDauerInTagen { get; set; }
+        private Kunde Kunde { get; set; }
+        private Auto Auto { get; set; }
 
-        public Vermietung(int vermietungsNr, DateTime mietStart, DateTime mietEnde, int mietdauerinTagen, Kunde kunde, Auto auto)
+        public Vermietung(int vermietungsNr, DateTime mietStart, DateTime mietEnde, int mietDauerInTagen, Kunde kunde, Auto auto)
+        {
+            VermietungsNr = vermietungsNr;
+            MietStart = mietStart;
+            MietEnde = mietEnde;
+            MietDauerInTagen = mietDauerInTagen;
+            Kunde = kunde;
+            Auto = auto;
+        }
+
+        public void AutoVermieten(int vermietungsNr, int mietDauerInTagen, Kunde kunde, Auto auto)
         {
             VermietungsNr = vermietungsNr;
             MietStart = DateTime.Now;
-            MietEnde = mietEnde;
-            MietdauerinTagen = mietdauerinTagen;
+            MietDauerInTagen = mietDauerInTagen;
             Kunde = kunde;
             Auto = auto;
         }
 
-        public void AutoVermieten(int vermietungsNr, int mietdauerinTagen, Kunde kunde, Auto auto)
+        public DateTime AutoRueckgabe()
         {
-            VermietungsNr = vermietungsNr;
-            MietdauerinTagen = mietdauerinTagen;
-            Kunde = kunde;
-            Auto = auto;
-        }
-
-        public DateTime AutoRückgabe()
-        {
-            MietEnde =DateTime.Now;
+            MietEnde = DateTime.Now;
             return MietEnde;
         }
 
-        public void MietdauerErhoehen(int mietdauerinTagen)
+        public void MietdauerErhohen(int mietDauerInTagen)
         {
-            MietdauerinTagen += mietdauerinTagen;
+            MietDauerInTagen += mietDauerInTagen;
         }
 
-        public int GetVermietungsNr()
+        public double BerechnePreisMitTagen()
         {
-            return VermietungsNr;
+            return Auto.GetMietPreis() * MietDauerInTagen;
         }
 
-        public DateTime GetDatumMietStart()
+        public double BerechnePreisMitDateTime()
         {
-            return MietStart;
+            TimeSpan Differenz = MietEnde - MietStart;
+            return Differenz.Days * Auto.GetMietPreis();
         }
 
-        public DateTime GetDatumMietEnde()
-        {
-            return MietEnde;
-        }
-
-        public int GetMietdauerinTagen()
-        {
-            return MietdauerinTagen;
-        }
-
-        public Kunde GetKunde()
-        {
-            return Kunde;
-        }
-
-        public Auto GetAuto()
-        {
-            return Auto;
-        }
-
-        public float BerechnePreismitTagen()
-        {
-            float preisProTag = 10.0f;
-            float gesamtPreis = MietdauerinTagen * preisProTag;
-            return gesamtPreis;
-        }
-
-        public float BerechnePreismitDateTime()
-        {
-            float preisProStunde = 5.0f;
-            TimeSpan mietdauer = MietEnde - MietStart;
-            float gesamtPreis = (float)mietdauer.TotalHours * preisProStunde;
-            return gesamtPreis;
-        }
     }
-
 }

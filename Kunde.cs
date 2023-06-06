@@ -8,6 +8,7 @@ namespace AutoVermietung
 {
     internal class Kunde
     {
+        // Attribute
         private int KundenNr;
         private string Vorname;
         private string Nachname;
@@ -22,24 +23,26 @@ namespace AutoVermietung
             Adresse = adresse;
             KundeSeit = kundeSeit;
         }
-        int GetKundenNr()
+
+        public int GetKundenNr()
         {
             return KundenNr;
         }
-        string GetName()
-        {
-            return Vorname + "" + Nachname;
+
+        public string GetName()
+        { 
+            return Vorname + " " + Nachname; 
         }
-        string GetAdresse()
+
+        public string GetAdresse()
         {
             return Adresse;
         }
-        DateTime GetKundeSeit()
+
+        public DateTime GetKundeSeit()
         {
             return KundeSeit;
         }
-        
 
-        
     }
 }
