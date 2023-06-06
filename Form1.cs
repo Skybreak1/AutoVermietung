@@ -20,7 +20,7 @@ namespace AutoVermietung
         private void KundenManagerbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            KundenManager kundenManager = new KundenManager();
+            KundenManager kundenManager = new KundenManager(kunden);
             kundenManager.ShowDialog(this);
             this.Show();
         }
@@ -35,6 +35,7 @@ namespace AutoVermietung
 
         private void ImportKunden()
         {
+            kunden.Clear();
             StreamReader sr = new StreamReader("..\\..\\..\\Kunden.csv");
             while (!sr.EndOfStream)
             {
@@ -51,7 +52,7 @@ namespace AutoVermietung
 
         private void ImportAutos()
         {
-
+            autos.Clear();
             StreamReader sr = new StreamReader("..\\..\\..\\Autos.csv");
             while (!sr.EndOfStream)
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoVermietung
 {
-    internal class Kunde
+    public class Kunde
     {
         // Attribute
         private int KundenNr;
@@ -28,7 +28,14 @@ namespace AutoVermietung
         {
             return KundenNr;
         }
-
+        public string GetVorname()
+        {
+            return Vorname;
+        }
+        public string GetNachname()
+        {
+            return Nachname;
+        }
         public string GetName()
         { 
             return Vorname + " " + Nachname; 
