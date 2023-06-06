@@ -26,5 +26,18 @@ namespace AutoVermietung
             Mietpreis = mietpreis;
             Verfuegbar = verfuegbar;
         }
+        float getMietPreis()
+        {
+            return Mietpreis;
+        }
+
+        bool getVerfuegbar()
+        {
+            return Verfuegbar;
+        }
+        bool setVerfuegbar() 
+        { 
+            return Verfuegbar; 
+        }
     }
 }
